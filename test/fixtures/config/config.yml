@@ -1,4 +1,4 @@
 variables:
   variable: value
-  variable2: value2
+  variable2: another valuee
   bg: red
