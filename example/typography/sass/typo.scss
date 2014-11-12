@@ -1,0 +1,31 @@
+.typo{
+	margin-bottom: 24px;
+
+	// Classic Way
+	&.x-small{
+		font-size: 14px;
+	}
+	&.small{
+		font-size: 16px;
+	}
+	&.base{
+		font-size: 18px;
+	}
+	&.large{
+		font-size: 24px;
+	}
+
+	// List + Yaml Way
+	@each $range in yaml(typo-range){
+		&.#{$range}{
+			$size: yaml($range);
+			font-size: $size;
+		}
+	}
+
+	// @todo: Maps + Yaml way
+	// @each $scale, $size in yaml(typo){
+	// 	@debug $scale;
+	// 	@debug $size;		
+	// }
+}

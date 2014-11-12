@@ -1,4 +1,12 @@
 variables:
-  variable: value
-  variable2: value2
+  typo-range: ['x-small', 'small', 'base', 'large']
+  x-small: 14px
+  small: 16px
+  base: 18px
+  large: 24px
   bg: red
+  # typo:
+  #   x-small: "14px"
+  #   small: 16px
+  #   base: 18px
+  #   large: 24px

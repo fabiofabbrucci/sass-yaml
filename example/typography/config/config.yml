@@ -1,0 +1,7 @@
+variables:
+	typo-range: ['x-small', 'small', 'base', 'large']
+	x-small: 14px
+	small: 16px
+	base: 18px
+	large: 24px
+	bg: red
