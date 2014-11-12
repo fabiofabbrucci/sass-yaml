@@ -39,32 +39,38 @@ http://fabbrucci.me/2014/08/integrate-yaml-in-your-sass-through-compass/
 
 After you have created your Sass you'll need an HTML to test this, right?
 Something like this:
-	
-	<div class="typo x-small">Typo X-SMALL</div>
-	<div class="typo small">Typo SMALL</div>
-	<div class="typo base">Typo BASE</div>
-	<div class="typo large">Typo LARGE</div>
 
+```html
+
+<div class="typo x-small">Typo X-SMALL</div>
+<div class="typo small">Typo SMALL</div>
+<div class="typo base">Typo BASE</div>
+<div class="typo large">Typo LARGE</div>
+
+```
 Our SASS could be like this:
 
-	.typo{
-		margin-bottom: 24px;
+```sass
 
-		// Classic Way
-		&.x-small{
-			font-size: 14px;
-		}
-		&.small{
-			font-size: 16px;
-		}
-		&.base{
-			font-size: 18px;
-		}
-		&.large{
-			font-size: 24px;
-		}
-	}
+.typo{
+    margin-bottom: 24px;
 
+    // Classic Way
+    &.x-small{
+        font-size: 14px;
+    }
+    &.small{
+        font-size: 16px;
+    }
+    &.base{
+        font-size: 18px;
+    }
+    &.large{
+        font-size: 24px;
+    }
+}
+
+```
 ### The problem with this solution are:
 - When we add a size we need to *remember to change* the html (or the opposite)
 - If we start creating lists or maps in SASS it becomes harder to maintain HTML in sync
@@ -72,34 +78,41 @@ Our SASS could be like this:
 ## Using Sass-Yaml
 
 YAML:
+```yml
 
-	variables:
-	  typo-range: ['x-small', 'small', 'base', 'large']
-	  x-small: 14px
-	  small: 16px
-	  base: 18px
-	  large: 24px
+variables:
+  typo-range: ['x-small', 'small', 'base', 'large']
+  x-small: 14px
+  small:   16px
+  base:    18px
+  large:   24px
 
+```
 SASS:
 
-	.typo{
-		// List + Yaml Way
-		@each $range in yaml(typo-range){
-			&.#{$range}{
-				$size: yaml($range);
-				font-size: $size;
-			}
-		}
-	}
+```sass
+.typo{
+    // List + Yaml Way
+    @each $range in yaml(typo-range){
+        &.#{$range}{
+            $size: yaml($range);
+            font-size: $size;
+        }
+    }
+}
 
+```
 And the HTML can be generated from a template engine (Twig for example):
 
-	{% for scale in app.config.options.typo-range %}
-		<div class="color {{ scale }}">
-			Typo: {{ scale }}
-		</div>
-	{% endfor %}
+```twig
 
+{% for scale in app.config.options.typo-range %}
+    <div class="color {{ scale }}">
+        Typo: {{ scale }}
+    </div>
+{% endfor %}
+
+```
 # Next Challenges
 
 I have never code in ruby before this gem, so *my code is a mess* and is missing a lot of features.
