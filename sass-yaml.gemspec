@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Fabio Fabbrucci"]
   s.email       = ["fabio.fabbrucci@gmail.com"]
-  s.homepage    = "http://fabiofabbrucci.github.com/"
+  s.homepage    = "https://github.com/fabiofabbrucci/sass-yaml"
   s.summary     = %q{Allows use of Yaml in Sass.}
   s.description = %q{With this GEM you can easly query a Yaml file from your SASS.}
   s.license     = 'MIT'
